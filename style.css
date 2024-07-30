@@ -16,9 +16,9 @@
     padding: 20px;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
     border-radius: 10px;
-   
     
 }
+
 .quote-author{
     text-align: end;
 }
@@ -26,4 +26,27 @@
     margin-top: 12rem;
     margin-inline: auto;
     width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+.bdr{
+    /* border: 2px solid red ; */
+    color: rgb(43, 74, 63) ; 
+    font-weight: 900;
+    padding-top: 100px;
+   
+}
+.row{
+    margin-top: -130px !important;
+}
+@media screen and (max-width:370px){
+    .bdr{
+        font-size: 26px !important;
+    }
+    .quote-card{
+        width: 300px;
+    }
 }

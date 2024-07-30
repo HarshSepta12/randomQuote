@@ -1,22 +1,19 @@
-const text = document.querySelector('.quote-text');
+const content = document.querySelector('.quote-text');
 const author = document.querySelector('.quote-author');
 const nextBtn = document.querySelector('.button-container');
-const searchInput = document.querySelector('.search');
-const searcBtn = document.querySelector('.search-btn');
 
-// nextBtn.addEventListener('click', () =>{
-//     // text.innerText = "The greatest glory in living lies not in never falling, but in rising every time we fall."
-//     // author.innerText = "-Nelson Mandela"
-// })
-const fetchQuote =  async() =>{
-    nextBtn.addEventListener('click', async ()=>{
+// Function to fetch and display a random quote
+const fetchAndDisplayQuote = async () => {
+    const response = await fetch('https://type.fit/api/quotes');
+    const quotes = await response.json();
+    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    content.innerText = randomQuote.text;
+    author.innerText = randomQuote.author || 'Unknown';
+    console.log(quotes)
+};
 
-    const api = await fetch(`https://api.quotable.io/random`);
-    
-    const randomQuote = await api.json()
-    
-    text.innerText = randomQuote.content
-    author.innerText = randomQuote.author
-})
-}
-fetchQuote()
+// Add event listener to the button
+nextBtn.addEventListener('click', fetchAndDisplayQuote);
+
+// Display a random quote initially
+fetchAndDisplayQuote();
